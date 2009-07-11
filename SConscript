@@ -6,6 +6,7 @@ bzip2 = ARGUMENTS.get('bzip2')
 zlib = ARGUMENTS.get('zlib')
 
 if boost == None:
+
 	print 'This library requires boost (www.boost.org) so you will have to specify the path to the boost library in the scons arguments:'
 	print 'scons boost=<boost directory>'
 	print 'The bzip2 (www.bzip.org) and the zlib (www.zlib.net) components of this library are optional and will require you to specify their locations the same way:'
