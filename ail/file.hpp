@@ -55,6 +55,8 @@ namespace ail
 	bool create_directory(std::string const & path);
 	bool read_directory(std::string const & directory, string_vector & files, string_vector & directories);
 	bool rename_file(std::string const & target, std::string const & new_name);
+	bool remove_file(std::string const & path);
+
 	std::string join_paths(std::string const & left, std::string const & right);
 	bool retrieve_extension(std::string const & path, std::string & output);
 }

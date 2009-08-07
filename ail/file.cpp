@@ -192,8 +192,10 @@ namespace ail
 	bool append_to_file(std::string const & file_name, std::string const & input)
 	{
 		file file_object;
-		bool success = file_object.open_create(file_name);
-		if(success == false)
+		if(
+			!file_object.open(file_name) &&
+			!file_object.open_create(file_name)
+		)
 			return false;
 		file_object.seek_end();
 		file_object.write(input);
@@ -254,6 +256,18 @@ namespace ail
 			return false;
 		}
 		return true;
+	}
+
+	bool remove_file(std::string const & path)
+	{
+		try
+		{
+			return boost::filesystem::remove(path);
+		}
+		catch(...)
+		{
+			return false;
+		}
 	}
 
 	std::string join_paths(std::string const & left, std::string const & right)
