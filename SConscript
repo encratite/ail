@@ -21,7 +21,8 @@ optional_files = [
 defines = {
 	'_WIN32_WINNT': '0x0501',
 	'_CRT_SECURE_NO_WARNINGS': '1',
-	'_SCL_SECURE_NO_WARNINGS': '1'
+	'_SCL_SECURE_NO_WARNINGS': '1',
+	'BOOST_LIB_DIAGNOSTIC': 1
 }
 
 """
