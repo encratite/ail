@@ -292,4 +292,10 @@ namespace ail
 		output = path.substr(offset + 1);
 		return true;
 	}
+
+	bool file_exists(std::string const & path)
+	{
+		file file_object;
+		return file_object.open(path, file::open_mode_read);
+	}
 }

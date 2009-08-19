@@ -1,5 +1,5 @@
-#ifndef AIL_INI_HPP
-#define AIL_INI_HPP
+#ifndef AIL_CONFIGURATION_HPP
+#define AIL_CONFIGURATION_HPP
 
 #include <string>
 #include <vector>
@@ -12,13 +12,13 @@
 
 namespace ail
 {
-	class ini
+	class configuration
 	{
 
 	public:
 
-		ini();
-		ini(std::string const & file_name);
+		configuration();
+		configuration(std::string const & file_name);
 
 		bool load(std::string const & new_file_name);
 

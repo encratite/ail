@@ -1,17 +1,17 @@
-#include <ail/ini.hpp>
+#include <ail/configuration.hpp>
 
 namespace ail
 {
-	ini::ini()
+	configuration::configuration()
 	{
 	}
 
-	ini::ini(std::string const & file_name)
+	configuration::configuration(std::string const & file_name)
 	{
 		load(file_name);
 	}
 
-	bool ini::load(std::string const & new_file_name)
+	bool configuration::load(std::string const & new_file_name)
 	{
 		file_name = new_file_name;
 
@@ -72,7 +72,7 @@ namespace ail
 		return true;
 	}
 
-	bool ini::read_string(std::string const & variable_name, std::string & output)
+	bool configuration::read_string(std::string const & variable_name, std::string & output)
 	{
 		std::map<std::string, std::string>::iterator search = values.find(variable_name);
 		if(search == values.end())
@@ -82,7 +82,7 @@ namespace ail
 		return true;
 	}
 
-	std::string ini::string(std::string const & variable_name)
+	std::string configuration::string(std::string const & variable_name)
 	{
 		std::string output;
 		bool success = read_string(variable_name, output);
@@ -91,7 +91,7 @@ namespace ail
 		return output;
 	}
 
-	std::string ini::string(std::string const & variable_name, std::string const & default_value)
+	std::string configuration::string(std::string const & variable_name, std::string const & default_value)
 	{
 		std::string output;
 		bool success = read_string(variable_name, output);

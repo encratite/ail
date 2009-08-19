@@ -59,6 +59,8 @@ namespace ail
 
 	std::string join_paths(std::string const & left, std::string const & right);
 	bool retrieve_extension(std::string const & path, std::string & output);
+
+	bool file_exists(std::string const & path);
 }
 
 #endif
