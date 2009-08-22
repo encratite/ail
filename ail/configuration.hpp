@@ -1,5 +1,4 @@
-#ifndef AIL_CONFIGURATION_HPP
-#define AIL_CONFIGURATION_HPP
+#pragma once
 
 #include <string>
 #include <vector>
@@ -91,5 +90,3 @@ namespace ail
 		std::map<std::string, std::string> values;
 	};
 }
-
-#endif

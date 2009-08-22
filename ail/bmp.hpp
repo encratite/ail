@@ -1,5 +1,4 @@
-#ifndef AIL_BMP_HPP
-#define AIL_BMP_HPP
+#pragma once
 
 #include <string>
 
@@ -31,5 +30,3 @@ namespace ail
 		void write_header();
 	};
 }
-
-#endif AIL_BMP_HPP

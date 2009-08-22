@@ -1,5 +1,4 @@
-#ifndef AIL_FILE_HPP
-#define AIL_FILE_HPP
+#pragma once
 
 #include <string>
 #include <vector>
@@ -62,5 +61,3 @@ namespace ail
 
 	bool file_exists(std::string const & path);
 }
-
-#endif

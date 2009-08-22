@@ -1,5 +1,4 @@
-#ifndef AIL_CRC32_HPP
-#define AIL_CRC32_HPP
+#pragma once
 
 #include <cstddef>
 #include <ail/types.hpp>
@@ -18,5 +17,3 @@ namespace ail
 		ulong sum;
 	};
 }
-
-#endif

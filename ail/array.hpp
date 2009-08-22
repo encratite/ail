@@ -1,5 +1,4 @@
-#ifndef AIL_ARRAY_HPP
-#define AIL_ARRAY_HPP
+#pragma once
 
 #include <cstddef>
 
@@ -11,4 +10,3 @@ namespace ail
 		return size;
 	}
 }
-#endif

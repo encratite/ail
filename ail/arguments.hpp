@@ -1,5 +1,4 @@
-#ifndef AIL_ARGUMENTS_HPP
-#define AIL_ARGUMENTS_HPP
+#pragma once
 
 #include <string>
 #include <vector>
@@ -67,5 +66,3 @@ namespace ail
 		variable_vector variables;
 	};
 }
-
-#endif

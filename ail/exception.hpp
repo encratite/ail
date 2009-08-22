@@ -1,5 +1,4 @@
-#ifndef AIL_EXCEPTION_HPP
-#define AIL_EXCEPTION_HPP
+#pragma once
 
 #include <stdexcept>
 
@@ -18,5 +17,3 @@ namespace ail
 		std::string message;
 	};
 }
-
-#endif

@@ -1,5 +1,4 @@
-#ifndef AIL_STRING_HPP
-#define AIL_STRING_HPP
+#pragma once
 
 #include <string>
 #include <sstream>
@@ -94,5 +93,3 @@ namespace ail
 
 std::string operator+(char left, std::string const & right);
 std::string operator+(char const * left, std::string const & right);
-
-#endif

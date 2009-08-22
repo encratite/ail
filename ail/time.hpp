@@ -1,5 +1,4 @@
-#ifndef AIL_TIME_HPP
-#define AIL_TIME_HPP
+#pragma once
 
 #include <string>
 
@@ -12,5 +11,3 @@ namespace ail
 	std::string timestamp();
 	ullong boot_time();
 }
-
-#endif

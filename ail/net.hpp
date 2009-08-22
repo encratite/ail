@@ -1,5 +1,4 @@
-#ifndef AIL_NET
-#define AIL_NET
+#pragma once
 
 #include <ail/types.hpp>
 
@@ -16,6 +15,3 @@ namespace ail
 
 	std::string convert_ipv6(std::string const & input);
 }
-
-
-#endif

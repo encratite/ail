@@ -1,5 +1,4 @@
-#ifndef AIL_BZIP2_HPP
-#define AIL_BZIP2_HPP
+#pragma once
 
 #include <bzlib.h>
 #include <cstdio>
@@ -25,5 +24,3 @@ namespace ail
 
 	bool decompress_bzip2(std::string const & file_name, std::string & output);
 }
-
-#endif

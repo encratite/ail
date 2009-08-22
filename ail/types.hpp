@@ -1,5 +1,4 @@
-#ifndef AIL_TYPES_HPP
-#define AIL_TYPES_HPP
+#pragma once
 
 #include <vector>
 #include <string>
@@ -21,6 +20,4 @@ typedef boost::uint64_t uword;
 #else
 typedef boost::int32_t word;
 typedef boost::uint32_t uword;
-#endif
-
 #endif

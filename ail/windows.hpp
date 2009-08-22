@@ -1,5 +1,4 @@
-#ifndef AIL_WINDOWS_HPP
-#define AIL_WINDOWS_HPP
+#pragma once
 
 #include <ail/environment.hpp>
 
@@ -13,7 +12,5 @@
 //the winsock include is required because including windows.h prior to winsock2.h and then including winsock2.h results in many redefinition problems
 #include <winsock2.h>
 #include <windows.h>
-
-#endif
 
 #endif

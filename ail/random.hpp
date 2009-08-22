@@ -1,5 +1,4 @@
-#ifndef AIL_RANDOM_HPP
-#define AIL_RANDOM_HPP
+#pragma once
 
 #include <ail/exception.hpp>
 #include <ail/types.hpp>
@@ -98,5 +97,3 @@ namespace ail
 	extern random_algorithm_type prng_algorithm;
 	extern bool prng_has_been_seeded;
 }
-
-#endif

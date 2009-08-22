@@ -1,5 +1,4 @@
-#ifndef AIL_MEMORY_HPP
-#define AIL_MEMORY_HPP
+#pragma once
 
 #include <string>
 #include <cstddef>
@@ -42,5 +41,3 @@ namespace ail
 
 	ulong get_bit(char const * data, std::size_t offset);
 }
-
-#endif

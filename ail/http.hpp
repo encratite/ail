@@ -1,5 +1,4 @@
-#ifndef AIL_HTTP_HPP
-#define AIL_HTTP_HPP
+#pragma once
 
 #include <string>
 
@@ -126,5 +125,3 @@ namespace ail
 		void process_partial_data();
 	};
 }
-
-#endif

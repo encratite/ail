@@ -1,5 +1,4 @@
-#ifndef AIL_DNS_HPP
-#define AIL_DNS_HPP
+#pragma once
 
 #include <string>
 #include <vector>
@@ -111,5 +110,3 @@ namespace ail
 		void continue_processing(char * receive_buffer);
 	};
 }
-
-#endif
