@@ -1,79 +1,51 @@
-import nil.directory, sys, os
+import nil.directory, nil.environment, sys, os
 
 library = 'ail'
-boost = ARGUMENTS.get('boost')
-bzip2 = ARGUMENTS.get('bzip2')
-zlib = ARGUMENTS.get('zlib')
 
-if boost == None:
+is_windows = nil.environment.is_windows()
 
-	print 'This library requires boost (www.boost.org) so you will have to specify the path to the boost library in the scons arguments:'
-	print 'scons boost=<boost directory>'
-	print 'The bzip2 (www.bzip.org) and the zlib (www.zlib.net) components of this library are optional and will require you to specify their locations the same way:'
-	print 'scons boost=<boost directory> bzip2=<bzip2 directory> zlib=<zlib directory>'
-	sys.exit(1)
-	
-optional_files = [
-	(bzip2, 'bzip2.cpp'),
-	(zlib, 'zlib.cpp')
-]
+if is_windows:
+	boost = ARGUMENTS.get('boost')
+	bzip2 = ARGUMENTS.get('bzip2')
+	zlib = ARGUMENTS.get('zlib')
 
-defines = {
-	'_WIN32_WINNT': '0x0501',
-	'_CRT_SECURE_NO_WARNINGS': '1',
-	'_SCL_SECURE_NO_WARNINGS': '1',
-	'BOOST_LIB_DIAGNOSTIC': 1
-}
+	if boost == None:
 
-"""
-flags = [
-	#Maximise speed
-	'/O2',
-	
-	#Generate Intrinsic Functions
-	'/Oi',
-	
-	#Whole Program Optimization
-	'/GL',
-	
-	#IDE Minimal Rebuild, generates idb
-	#'/FD',
-	
-	#catches C++ exceptions only and tells the compiler to assume that extern C functions never throw a C++ exception
-	'/EHsc',
-	
-	#Causes your application to use the multithread- and DLL-specific version of the run-time library
-	'/MD',
-	
-	#Enable Function-Level Linking
-	'/Gy',
-	
-	#Displays a less severe level of warning messages, including warnings about function calls that precede their function prototypes in the source code.
-	'/W3',
-	
-	#Suppress Startup Banner
-	'/nologo',
-	
-	'/c',
-	
-	#Produces a program database (PDB) that contains type information and symbolic debugging information for use with the debugger
-	#'/Zi',
-	
-	#C++ source input
-	'/TP'
-]
-"""
+		print 'This library requires boost (www.boost.org) so you will have to specify the path to the boost library in the scons arguments:'
+		print 'scons boost=<boost directory>'
+		print 'The bzip2 (www.bzip.org) and the zlib (www.zlib.net) components of this library are optional and will require you to specify their locations the same way:'
+		print 'scons boost=<boost directory> bzip2=<bzip2 directory> zlib=<zlib directory>'
+		sys.exit(1)
+		
+	optional_files = [
+		(bzip2, 'bzip2.cpp'),
+		(zlib, 'zlib.cpp')
+	]
 
-flags = [
-	'/EHsc'
-]
+	defines = {
+		'_WIN32_WINNT': '0x0501',
+		'_CRT_SECURE_NO_WARNINGS': '1',
+		'_SCL_SECURE_NO_WARNINGS': '1',
+		'BOOST_LIB_DIAGNOSTIC': 1
+	}
 
-linker_flags = [
-	'/NOLOGO',
-	'/LTCG'
-]
+	flags = [
+		'/EHsc'
+	]
 
-dependencies = [boost, bzip2, zlib]
+	linker_flags = [
+		'/NOLOGO',
+		'/LTCG'
+	]
+
+	dependencies = [boost, bzip2, zlib]
+	
+else:
+	optional_files = []
+	defines = []
+	flags = []
+	linker_flags = []
+	dependencies = []
 
 relative_source_directory = os.path.join('..', library)
 
@@ -94,7 +66,7 @@ for path, file in optional_files:
 
 include_directories = ['..'] + filter(lambda path: path != None, dependencies)
 
-cpus = int(os.environ.get('NUMBER_OF_PROCESSORS', 2))
+cpus = int(os.environ.get('NUMBER_OF_PROCESSORS', 1))
 
 thread_string = 'thread'
 if cpus > 1:

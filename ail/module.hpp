@@ -4,6 +4,8 @@
 #include <ail/environment.hpp>
 #include <ail/windows.hpp>
 
+#ifdef AIL_WINDOWS
+
 namespace ail
 {
 	class dynamic_module
@@ -24,3 +26,5 @@ namespace ail
 #endif
 	};
 }
+
+#endif

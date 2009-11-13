@@ -1,5 +1,7 @@
 #include <ail/module.hpp>
 
+#ifdef AIL_WINDOWS
+
 namespace ail
 {
 	dynamic_module::dynamic_module():
@@ -39,3 +41,5 @@ namespace ail
 		return output != 0;
 	}
 }
+
+#endif
