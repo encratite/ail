@@ -1,6 +1,7 @@
 import nil.directory, nil.environment, sys, os
 
 library = 'ail'
+source = 'source'
 
 is_windows = nil.environment.is_windows()
 
@@ -42,14 +43,16 @@ if is_windows:
 	
 else:
 	optional_files = []
-	defines = []
+	defines = {}
 	flags = []
 	linker_flags = []
 	dependencies = []
 
-relative_source_directory = os.path.join('..', library)
+relative_source = os.path.join('..', source)
 
-source_files = map(lambda path: os.path.basename(path), nil.directory.get_files_by_extension(relative_source_directory, 'cpp'))
+source_files = nil.directory.get_files_by_extension(relative_source, 'cpp')
+map_path = lambda path: os.path.basename(path)
+source_files = map(map_path, source_files)
 if len(source_files) == 0:
 	print 'No targets. CWD: %s' % os.getcwd()
 	sys.exit(1)
@@ -72,6 +75,8 @@ thread_string = 'thread'
 if cpus > 1:
 	thread_string += 's'
 print 'Compiling project with %d %s' % (cpus, thread_string)
+
+source_files = map(lambda path: os.path.join('..', source, path), source_files)
 
 environment = Environment(CPPPATH = include_directories, CPPDEFINES = defines, CCFLAGS = flags)
 environment.Append(LINKFLAGS = linker_flags)
