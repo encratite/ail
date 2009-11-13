@@ -8,6 +8,11 @@
 namespace ail
 {
 	typedef boost::mt19937 random_algorithm_type;
+	
+	void seed_check();
+	
+	extern random_algorithm_type prng_algorithm;
+	extern bool prng_has_been_seeded;
 
 	template <typename integer_type>
 		integer_type random_integer(integer_type minimum, integer_type maximum)
@@ -84,16 +89,11 @@ namespace ail
 		{
 			if(total_weight == 0)
 				throw exception("Random scale object doesn't contain any elements yet");
-			ulong choice = random::uint(0, total_weight - 1);
+			ulong choice = random_integer<ulong>(0, total_weight - 1);
 			typename std::vector<element>::iterator iterator = std::find(elements.begin(), elements.end(), choice);
 			if(iterator == elements.end())
 				throw exception("Unable to match weight, code must be broken");
 			return iterator;
 		}
 	};
-
-	void seed_check();
-
-	extern random_algorithm_type prng_algorithm;
-	extern bool prng_has_been_seeded;
 }
