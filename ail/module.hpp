@@ -4,7 +4,9 @@
 #include <ail/environment.hpp>
 #include <ail/windows.hpp>
 
-#ifdef AIL_WINDOWS
+#ifndef AIL_WINDOWS
+#include <boost/thread/mutex.hpp>
+#endif
 
 namespace ail
 {
@@ -23,8 +25,9 @@ namespace ail
 
 #ifdef AIL_WINDOWS
 		::HMODULE module_handle;
+#else
+		void * module_handle;
+		boost::mutex mutex;
 #endif
 	};
 }
-
-#endif
