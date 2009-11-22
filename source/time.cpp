@@ -45,9 +45,9 @@ namespace ail
 		std::tm * pointer = std::localtime(&current_time);
 		std::stringstream output;
 		output.fill('0');
-		output << (pointer->tm_year + 1900) << ".";
+		output << (pointer->tm_year + 1900) << "-";
 		output.width(2);
-		output << (pointer->tm_mon + 1) << ".";
+		output << (pointer->tm_mon + 1) << "-";
 		output.width(2);
 		output << pointer->tm_mday << " ";
 		output.width(2);
