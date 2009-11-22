@@ -53,7 +53,7 @@ namespace ail
 		output = ::GetProcAddress(module_handle, name.c_str());
 		return output != 0;
 #else
-		boost::mutex::scoped_lock scoped_lock(mutex)
+		boost::mutex::scoped_lock scoped_lock(mutex);
 		output = ::dlsym(module_handle, name.c_str());
 		return dlerror() == 0;
 #endif
