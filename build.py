@@ -12,14 +12,5 @@ nil.setup.install_packages(packages)
 builder = nil.build.builder(project)
 
 if builder.static_library():
-	root = os.path.dirname(nil.environment.get_script_path())
-	
-	target_library_path = os.path.join(root, builder.output_directory, builder.library)
-	library_path = os.path.join('/usr/local/lib', builder.library)
-	
-	nil.setup.symlink(target_library_path, library_path)
-	
-	target_include_path = os.path.join(root, project)
-	include_path = os.path.join('/usr/local/include', project)
-
-	nil.setup.symlink(target_include_path, include_path)
+	nil.setup.include(project)
+	nil.setup.library(builder.library)
