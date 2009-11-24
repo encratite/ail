@@ -86,7 +86,7 @@ namespace ail
 	{
 		std::string output;
 		bool success = read_string(variable_name, output);
-		if(success == false)
+		if(!success)
 			throw exception("Unable to find string value \"" + variable_name + "\" in \"" + file_name + "\"");
 		return output;
 	}
@@ -95,9 +95,27 @@ namespace ail
 	{
 		std::string output;
 		bool success = read_string(variable_name, output);
-		if(success == false)
+		if(!success)
 			return default_value;
 
 		return output;
+	}
+
+	bool configuration::boolean(std::string const & variable_name)
+	{
+		word output;
+		bool success = read_number<word>(variable_name, output);
+		if(!success)
+			throw exception("Unable to find bool value \"" + variable_name + "\" in \"" + file_name + "\"");
+		return output != 0;
+	}
+
+	bool configuration::boolean(std::string const & variable_name, bool default_value)
+	{
+		word output;
+		bool success = read_number<word>(variable_name, output);
+		if(success == false)
+			return default_value;
+		return output != 0;
 	}
 }

@@ -8,6 +8,7 @@
 #include <ail/file.hpp>
 #include <ail/string.hpp>
 #include <ail/exception.hpp>
+#include <ail/types.hpp>
 
 namespace ail
 {
@@ -23,6 +24,9 @@ namespace ail
 
 		std::string string(std::string const & variable_name);
 		std::string string(std::string const & variable_name, std::string const & default_value);
+
+		bool boolean(std::string const & variable_name);
+		bool boolean(std::string const & variable_name, bool default_value);
 
 		template <typename number_type>
 			bool read_number(std::string const & variable_name, number_type & output)
@@ -74,10 +78,8 @@ namespace ail
 				return default_value;
 			}
 
-			if(success == false)
-			{
+			if(!success == false)
 				return default_value;
-			}
 
 			return output;
 		}
