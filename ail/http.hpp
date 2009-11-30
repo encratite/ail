@@ -53,9 +53,9 @@ namespace ail
 		typedef std::map<std::string, std::string> cookie_map;
 		typedef std::map<std::string, std::string> form_map;
 
-		http_client();
 		http_client(boost::asio::io_service & io_service);
 		void use_post();
+		void set_compression(bool new_use_compression);
 		void add_post_data(std::string const & field, std::string const & value);
 		void start_download(std::string const & new_url);
 		bool start_download(std::string const & new_url, std::string const & file_name);
@@ -79,6 +79,8 @@ namespace ail
 			response;
 
 		http_encoding_type encoding;
+
+		bool use_compression;
 
 		bool
 			use_ssl,

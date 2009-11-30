@@ -35,6 +35,7 @@ namespace ail
 		io_service(io_service),
 		resolver(io_service),
 		socket(io_service),
+		use_compression(true),
 		has_error_handler(false),
 		has_download_handler(false),
 		has_download_finished_handler(false),
@@ -46,6 +47,11 @@ namespace ail
 	void http_client::use_post()
 	{
 		method = "POST";
+	}
+
+	void http_client::set_compression(bool new_use_compression)
+	{
+		use_compression = new_use_compression;
 	}
 
 	void http_client::add_post_data(std::string const & field, std::string const & value)
@@ -142,7 +148,10 @@ namespace ail
 			//request_stream << "Connection: close\r\n";
 			//request_stream << "Connection: Keep-Alive, TE\r\n";
 			request_stream << "Connection: close, TE\r\n";
-			request_stream << "TE: deflate, gzip, chunked, identity, trailers\r\n";
+			request_stream << "TE: ";
+			if(use_compression)
+				request_stream << "deflate, gzip, ";
+			request_stream << "chunked, identity, trailers\r\n";
 			if(!referrer.empty())
 				request_stream << "Referer: " << referrer << "\r\n";
 			if(!cookies.empty())
@@ -169,7 +178,7 @@ namespace ail
 					post_data += boundary_tag + "\r\nContent-Disposition: form-data; name=\"" + i->first + "\"\r\n\r\n" + i->second + "\r\n";
 				post_data += boundary_tag + "--\r\n";
 
-				std::cout << ail::consolify(post_data) << std::endl;
+				//std::cout << ail::consolify(post_data) << std::endl;
 
 				request_stream << "Content-Length: " << post_data.size() << "\r\n";
 				request_stream << "Content-Type: multipart/form-data; boundary=" << boundary_tag << "\r\n";
