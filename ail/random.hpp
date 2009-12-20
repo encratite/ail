@@ -4,6 +4,7 @@
 #include <ail/types.hpp>
 
 #include <boost/random.hpp>
+#include <boost/random/uniform_real.hpp>
 
 namespace ail
 {
@@ -24,6 +25,18 @@ namespace ail
 		distribution_type distribution(minimum, maximum);
 		boost::variate_generator<random_algorithm_type &, distribution_type> generator(prng_algorithm, distribution);
 
+		return generator();
+	}
+
+	template <class real_type>
+		real_type random_real(real_type minimum = 0, real_type maximum = 1)
+	{
+		seed_check();
+
+		typedef boost::uniform_real<real_type> distribution_type;
+
+		distribution_type distribution(minimum, maximum);
+		boost::variate_generator<random_algorithm_type &, distribution_type> generator(prng_algorithm, distribution);
 		return generator();
 	}
 
