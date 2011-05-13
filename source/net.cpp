@@ -3,14 +3,13 @@
 
 #include <sstream>
 
-//#include <boost/format.hpp>
 #include <boost/foreach.hpp>
 
 namespace ail
 {
 	void extract_data(boost::asio::streambuf & stream_buffer, std::string & buffer)
 	{
-		std::size_t size = stream_buffer.in_avail();
+		std::size_t size = static_cast<std::size_t>(stream_buffer.in_avail());
 		char * char_buffer = new char[size];
 		stream_buffer.sgetn(char_buffer, size);
 		buffer.append(char_buffer, size);

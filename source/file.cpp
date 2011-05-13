@@ -231,7 +231,7 @@ namespace ail
 		{
 			for(boost::filesystem::directory_iterator i(directory), end; i != end; i++)
 			{
-				std::string const & path = i->leaf();
+				std::string const & path = i->path().string();
 				if(boost::filesystem::is_directory(i->status()))
 					directories.push_back(path);
 				else
