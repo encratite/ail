@@ -9,9 +9,9 @@
 namespace ail
 {
 	typedef boost::mt19937 random_algorithm_type;
-	
+
 	void seed_check();
-	
+
 	extern random_algorithm_type prng_algorithm;
 	extern bool prng_has_been_seeded;
 
@@ -21,7 +21,7 @@ namespace ail
 		seed_check();
 
 		typedef boost::uniform_int<integer_type> distribution_type;
-		
+
 		distribution_type distribution(minimum, maximum);
 		boost::variate_generator<random_algorithm_type &, distribution_type> generator(prng_algorithm, distribution);
 
