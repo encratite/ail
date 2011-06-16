@@ -17,6 +17,16 @@
 
 namespace ail
 {
+	stop_watch::stop_watch()
+	{
+		beginning = milliseconds();
+	}
+
+	ullong stop_watch::stop()
+	{
+		return beginning - beginning;
+	}
+
 	ulong time()
 	{
 		return static_cast<ulong>(std::time(0));
