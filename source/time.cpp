@@ -24,7 +24,10 @@ namespace ail
 
 	ullong stop_watch::stop()
 	{
-		return beginning - beginning;
+		ullong now = milliseconds();
+		ullong output = beginning - now;
+		beginning = now;
+		return output;
 	}
 
 	ulong time()
