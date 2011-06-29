@@ -42,6 +42,12 @@ namespace ail
 		void set_file_pointer(std::size_t offset);
 		void seek_end();
 
+		template <typename type>
+			void read_type(type * output, std::size_t count)
+		{
+			read(reinterpret_cast<char *>(output), count * sizeof(type));
+		}
+
 	private:
 		FILE * file_descriptor;
 	};
