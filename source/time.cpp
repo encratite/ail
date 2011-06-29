@@ -19,6 +19,11 @@ namespace ail
 {
 	stop_watch::stop_watch()
 	{
+		start();
+	}
+
+	void stop_watch::start()
+	{
 		beginning = milliseconds();
 	}
 

@@ -10,6 +10,7 @@ namespace ail
 	{
 	public:
 		stop_watch();
+		void start();
 		ullong stop();
 
 	private:
