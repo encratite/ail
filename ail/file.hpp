@@ -48,6 +48,12 @@ namespace ail
 			read(reinterpret_cast<char *>(output), count * sizeof(type));
 		}
 
+		template <typename type>
+			void write_type(type * input, std::size_t count)
+		{
+			write(reinterpret_cast<char *>(input), count * sizeof(type));
+		}
+
 	private:
 		FILE * file_descriptor;
 	};
