@@ -3,7 +3,6 @@
 #include <string>
 #include <vector>
 #include <map>
-#include <iostream>
 
 #include <ail/file.hpp>
 #include <ail/string.hpp>
@@ -43,8 +42,7 @@ namespace ail
 			}
 			catch(std::exception const &)
 			{
-				std::cout << "Unable to find string value \"" << variable_name << "\" in \"" << file_name << "\"" << std::endl;
-				throw exception("Failed to parse numeric value for a variable");
+				throw exception("Failed to parse numeric value for variable \"" + variable_name + "\" in \"" + file_name + "\"");
 			}
 
 			return true;
@@ -57,8 +55,7 @@ namespace ail
 			bool success = read_number<number_type>(variable_name, output);
 			if(success == false)
 			{
-				std::cout << "Unable to find string value \"" << variable_name << "\" in \"" << file_name << "\"" << std::endl;
-				throw exception("Missing value for a required variable");
+				throw exception("The required variable \"" + variable_name + "\" is missing in \"" + file_name + "\"");
 			}
 			return output;
 		}
