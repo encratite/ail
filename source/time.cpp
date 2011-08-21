@@ -35,6 +35,13 @@ namespace ail
 		return output;
 	}
 
+	ullong stop_watch::time()
+	{
+		ullong now = milliseconds();
+		ullong output = now - beginning;
+		return output;
+	}
+
 	ulong time()
 	{
 		return static_cast<ulong>(std::time(0));

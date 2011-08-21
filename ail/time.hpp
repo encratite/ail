@@ -12,6 +12,7 @@ namespace ail
 		stop_watch();
 		void start();
 		ullong stop();
+		ullong time();
 
 	private:
 		ullong beginning;
